@@ -1,0 +1,105 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "D360AdminServer",
+        "description": "Backend Server for D360 Admin",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Users",
+            "description": "API for users in the system"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/users/add": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Create new user in system",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "User that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New user is created",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "required": [],
+            "properties": {
+                "FirstName": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "ChannelID": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "SalesOfficeID": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "SalesGroupID": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Company": {
+                    "type": "string"
+                },
+                "Position": {
+                    "type": "string"
+                },
+                "Telephone": {
+                    "type": "string"
+                },
+                "Mobile": {
+                    "type": "string"
+                },
+                "Email": {
+                    "type": "string",
+                    "format": "email"
+                }
+            }
+        },
+        "Users": {
+            "type": "array",
+            "$ref": "#/definitions/User"
+        }
+    }
+}
